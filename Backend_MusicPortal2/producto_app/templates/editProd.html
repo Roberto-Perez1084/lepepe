@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Editar Producto</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editProd/" method="post">{% csrf_token %}
+                    <div class="form-group py-3">
+                        <input type="text" id="txtid" name="txtid" class="form-control" value="{{prod.id_producto}}" minlenght="1" maxlenght="6" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtnom" name="txtnom" class="form-control" value="{{prod.nom_producto}}" minlenght="1" maxlenght="100" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txttipo" name="txttipo" class="form-control" value="{{prod.tipo_producto}}" minlenght="1" maxlenght="100" required>
+                    </div>
+                    <div class="form-group ">
+                        <input type="text" id="txtcant" name="txtcant" class="form-control" value="{{prod.cant_producto}}" minlenght="1" maxlenght="6" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtpag" name="txtpag" class="form-control" value="{{prod.metodo_pag}}" minlenght="1" maxlenght="30" required>
+                    </div>
+                    <div class="form-group ">
+                        <input type="text" id="txtprov" name="txtprov" class="form-control" value="{{prod.proveedor_prod}}" minlenght="1" maxlenght="50" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtidprov" name="txtidprov" class="form-control" value="{{prod.id_proveedor}}" minlenght="1" maxlenght="6" required>
+                    </div>
+                    <div class="form-group py-4">
+                        <button type="submit" class="btn btn-primary">Guardar producto</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

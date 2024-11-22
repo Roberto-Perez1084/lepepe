@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+    <br>
+    <div class="row">
+        <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5">
+            <h1>Ingresar Clientes</h1>
+            <div class="card">
+                <div class="card-body">
+                    <form action="saveCli/" method="post">{% csrf_token %}
+                        <div class="form-group py-3">
+                            <input type="text" id="txtid" name="txtid" placeholder="id cliente" minlenght="1" maxlenght="6" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="txtnombre" name="txtnombre" placeholder="nombre cliente" minlenght="1" maxlenght="100" required>
+                        </div>
+                        <div class="form-group py-3">
+                            <input type="text" id="txtapellido" name="txtapellido" placeholder="apellido cliente" minlenght="1" maxlenght="100" required>
+                        </div>
+                        <div class="form-group ">
+                            <input type="text" id="numedad" name="numedad" placeholder="edad cliente" minlenght="1" maxlenght="2" required>
+                        </div>
+                        <div class="form-group py-3">
+                            <input type="text" id="numtel" name="numtel" placeholder="telefono cliente" minlenght="1" maxlenght="14" required>
+                        </div>
+                        <div class="form-group ">
+                            <input type="text" id="txtemail" name="txtemail" placeholder="email cliente" minlenght="1" maxlenght="500" required>
+                        </div>
+                        <div class="form-group py-3">
+                            <input type="date" id="datereg" name="datereg" placeholder="YYYY-MM-DD" minlenght="1" maxlenght="10" required>
+                        </div>
+                        <div class="form-group py-4">
+                            <button type="submit" class="btn btn-primary">Añadir cliente</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5">
+            <h1>Listado de clientes</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Edad</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Registro</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for m in clt %}
+                        <tr>
+                            <td>{{m.id_cliente}}</td>
+                            <td>{{m.nom_cliente}}</td>
+                            <td>{{m.apelli_cliente}}</td>
+                            <td>{{m.edad_cliente}}</td>
+                            <td>{{m.tel_cliente}}</td>
+                            <td>{{m.email_cliente}}</td>
+                            <td>{{m.fech_reg}}</td>
+                            <td><a href="selCli/{{m.id_cliente}}" class="btn btn-primary">Editar</a></td>
+                            <td><a href="delCli/{{m.id_cliente}}" class="btn btn-danger">Borrar</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

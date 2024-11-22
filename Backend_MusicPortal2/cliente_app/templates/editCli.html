@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Editar Materia</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editCli/" method="post">{% csrf_token %}
+                    <div class="form-group py-3">
+                        <input type="text" id="txtid" name="txtid" class="form-control" value="{{clt.id_cliente}}" minlenght="1" maxlenght="6" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtnombre" name="txtnombre" class="form-control" value="{{clt.nom_cliente}}" minlenght="1" maxlenght="100" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtapellido" name="txtapellido" class="form-control" value="{{clt.apelli_cliente}}" minlenght="1" maxlenght="100" required>
+                    </div>
+                    <div class="form-group ">
+                        <input type="text" id="numedad" name="numedad" class="form-control" value="{{clt.edad_cliente}}" minlenght="1" maxlenght="2" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="numtel" name="numtel" class="form-control" value="{{clt.tel_cliente}}" minlenght="1" maxlenght="14" required>
+                    </div>
+                    <div class="form-group ">
+                        <input type="text" id="txtemail" name="txtemail" class="form-control" value="{{clt.email_cliente}}" minlenght="1" maxlenght="500" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="date" id="datereg" name="datereg" class="form-control" value="{{clt.fech_reg}}" minlenght="1" maxlenght="10" required>
+                    </div>
+                    <div class="form-group py-4">
+                        <button type="submit" class="btn btn-primary">Guardar cliente</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

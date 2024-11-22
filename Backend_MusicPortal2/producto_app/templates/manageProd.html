@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+    <br>
+    <div class="row">
+        <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5">
+            <h1>Ingresar Clientes</h1>
+                <div class="card">
+                    <div class="card-body">
+                        <form action="saveProd/" method="post">{% csrf_token %}
+                            <div class="form-group py-3">
+                                <input type="text" id="txtid" name="txtid" class="form-control" placeholder="ID" minlenght="1" maxlenght="6" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="txtnom" name="txtnom" class="form-control" placeholder="Nombre" minlenght="1" maxlenght="100" required>
+                            </div>
+                            <div class="form-group py-3">
+                                <input type="text" id="txttipo" name="txttipo" class="form-control" placeholder="Tipo" minlenght="1" maxlenght="100" required>
+                            </div>
+                            <div class="form-group ">
+                                <input type="text" id="txtcant" name="txtcant" class="form-control" placeholder="Cantida" minlenght="1" maxlenght="6" required>
+                            </div>
+                            <div class="form-group py-3">
+                                <input type="text" id="txtpag" name="txtpag" class="form-control" placeholder="Metodo de Pago" minlenght="1" maxlenght="30" required>
+                            </div>
+                            <div class="form-group ">
+                                <input type="text" id="txtprov" name="txtprov" class="form-control" placeholder="Proveedor" minlenght="1" maxlenght="50" required>
+                            </div>
+                            <div class="form-group py-3">
+                                <input type="text" id="txtidprov" name="txtidprov" class="form-control" placeholder="ID proveedor" minlenght="1" maxlenght="6" required>
+                            </div>
+                            <div class="form-group py-4">
+                                <button type="submit" class="btn btn-primary">Añadir producto</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5">
+            <h1>Listado de Productos</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Pago</th>
+                        <th scope="col">Proveedor</th>
+                        <th scope="col">ID Proveedor</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for m in prod %}
+                        <tr>
+                            <td>{{m.id_producto}}</td>
+                            <td>{{m.nom_producto}}</td>
+                            <td>{{m.tipo_producto}}</td>
+                            <td>{{m.cant_producto}}</td>
+                            <td>{{m.metodo_pag}}</td>
+                            <td>{{m.proveedor_prod}}</td>
+                            <td>{{m.id_proveedor}}</td>
+                            <td><a href="selProd/{{m.id_producto}}" class="btn btn-primary">Editar</a></td>
+                            <td><a href="delProd/{{m.id_producto}}" class="btn btn-danger">Borrar</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
